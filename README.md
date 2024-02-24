@@ -1,13 +1,11 @@
 # ymo
 
 [![GoDoc](https://godoc.org/github.com/ad/ymo?status.svg)](https://godoc.org/github.com/ad/ymo)
-[![Go Report Card](https://goreportcard.com/badge/github.com/ad/ymo)](https://goreportcard.com/report/github.com/ad/ymo)
-[![Build Status](https://travis-ci.org/ad/ymo.svg?branch=master)](https://travis-ci.org/ad/ymo)
-[![Coverage Status](https://coveralls.io/repos/github/ad/ymo/badge.svg?branch=master)](https://coveralls.io/github/ad/ymo?branch=master)
+[![Test](https://github.com/ad/ymo/actions/workflows/gotest.yml/badge.svg)](https://github.com/ad/ymo/actions/workflows/gotest.yml)
 
-ymo is a Go package for sending offline conversions to Yandex.Metrica. It provides a convenient way to upload offline conversion data to Yandex.Metrica's API.
+ymo is a Go package for sending offline conversions to Yandex.Metrika. It provides a convenient way to upload offline conversion data to Yandex.Metrika's API.
 
-For detailed documentation and API reference, please visit the [official Yandex.Metrica documentation](https://yandex.ru/dev/metrika/doc/api2/management/offline_conversion/upload.html).
+For detailed documentation and API reference, please visit the [official Yandex.Metrika documentation](https://yandex.ru/dev/metrika/doc/api2/management/offline_conversion/upload.html).
 
 ## Installation
 
