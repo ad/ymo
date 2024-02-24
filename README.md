@@ -23,7 +23,7 @@ import (
 )
 
 func main() {
-    client := ymo.NewYMOClient(1234567, "your ym token", "CLIENT_ID", true)
+    client := ymo.NewYMOClient("1234567", "your ym token", "CLIENT_ID", true)
     err := client.SendEvent(
         ymo.Event{
             ClientId: "your client id",
