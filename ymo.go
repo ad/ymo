@@ -125,3 +125,31 @@ func getClientTypeHeader(clientType string) (string, error) {
 
 	return "", fmt.Errorf("unknown clientType: %s", clientType)
 }
+
+func (g *YMOClient) GetStatus(eventID string) (string, error) {
+	endpoint := fmt.Sprintf("https://api-metrika.yandex.net/management/v1/counter/%s/offline_conversions/uploading/%s", g.counter, eventID)
+
+	req, err := http.NewRequest("GET", endpoint, nil)
+	if err != nil {
+		return "", fmt.Errorf("%s", err)
+	}
+
+	req.Header.Set("Authorization", fmt.Sprintf("OAuth %s", g.token))
+
+	client := &http.Client{Timeout: 6 * time.Second}
+	resp, err := client.Do(req)
+	if err != nil {
+		return "", fmt.Errorf("%s", err)
+	}
+
+	defer func(resp *http.Response) {
+		_ = resp.Body.Close()
+	}(resp)
+
+	b, err := io.ReadAll(resp.Body)
+	if !(resp.StatusCode == http.StatusOK || resp.StatusCode == http.StatusNoContent || resp.StatusCode == http.StatusBadRequest || resp.StatusCode == http.StatusForbidden) || (err != nil) {
+		return "", fmt.Errorf("HTTPStatusCode: '%d'; ResponseMessage: '%s'; ErrorMessage: '%s'", resp.StatusCode, string(b), err)
+	}
+
+	return string(b), nil
+}
